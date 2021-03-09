@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2020-11-15 11:02:33
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-02-25 18:44:33
+ * @LastEditTime: 2021-02-25 18:39:29
  * @Description : 顺序表实现
  */
 
@@ -117,7 +117,9 @@ void MergeList(SqList LA, SqList LB, SqList &LC)
     int *pa_last = pa + LA.length - 1, *pb_last = pb + LB.length - 1;
     while (pa <= pa_last && pb <= pb_last)
     {
-        if (*pa <= *pb)
+        if (*pa == *pb)
+            pb++;
+        else if (*pa < *pb)
             *pc++ = *pa++;
         else
             *pc++ = *pb++;

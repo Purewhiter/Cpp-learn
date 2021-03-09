@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-02-02 22:44:10
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-02-27 14:33:12
+ * @LastEditTime: 2021-02-25 20:30:29
  * @Description : 
  */
 #include<iostream>
@@ -17,6 +17,8 @@ int main()
     //     (*i)*= 2;
     // for(auto i:vs)
     //     cout << i << endl;
+    int *p = NULL;
+    while(p)
     cout << "你好，世界" << endl;
     return 0;
 }

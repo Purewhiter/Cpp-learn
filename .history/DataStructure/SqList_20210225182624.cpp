@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2020-11-15 11:02:33
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-02-25 18:44:33
+ * @LastEditTime: 2021-02-25 18:26:24
  * @Description : 顺序表实现
  */
 
@@ -18,40 +18,40 @@ typedef struct
 {
     ElemType *elem;
     int length;
-} SqList;
+}SqList;
 
-Status InitList(SqList &L) //初始化顺序表
+Status InitList(SqList &L)//初始化顺序表
 {
-    L.elem = new ElemType[MAXSIZE];
-    if (L.elem == NULL)
+    L.elem=new ElemType[MAXSIZE];
+    if(L.elem==NULL)
         exit(OVERFLOW);
     L.length = 0;
     return OK;
 }
 
-Status DestroyList(SqList &L) //删除顺序表
+Status DestroyList(SqList &L)//删除顺序表
 {
-    if (L.elem == NULL)
+    if(L.elem==NULL)
         return ERROR;
-    delete[] L.elem;
+    delete []L.elem;
     L.length = 0;
     return OK;
 }
-Status ClearList(SqList &L) //清空顺序表
+Status ClearList(SqList &L)//清空顺序表
 {
-    if (L.elem == NULL)
+    if(L.elem==NULL)
         return ERROR;
     L.length = 0;
     return OK;
 }
-ElemType GetElem(SqList L, int i) //顺序表取值
+ElemType GetElem(SqList L, int i)//顺序表取值
 {
     if (i < 1 || i > L.length)
         return ERROR;
     return L.elem[i - 1];
 }
 
-int LocateElem(SqList L, ElemType x) //查找元素x
+int LocateElem(SqList L, ElemType x)//查找元素x
 {
     for (int i = 0; i < L.length; i++)
         if (L.elem[i] == x)
@@ -94,10 +94,10 @@ Status Delete(SqList &L, int i)
     cout << "删除成功！\n";
     return OK;
 }
-void CreateList(SqList &L, int n)
+void CreateList(SqList &L,int n)
 {
     int x;
-    for (int i = 1; i <= n; i++)
+    for(int i = 1; i <=n; i++)
     {
         cin >> x;
         Insert(L, i, x);
@@ -105,38 +105,22 @@ void CreateList(SqList &L, int n)
 }
 void Display(SqList L)
 {
-    for (int i = 0; i < L.length; i++)
+    for(int i = 0; i < L.length;i++)
         cout << L.elem[i] << " ";
     cout << endl;
 }
-void MergeList(SqList LA, SqList LB, SqList &LC)
+void MergeList(SqList LA,SqList LB,SqList &LC)
 {
-    LC.length = LA.length + LB.length;
-    LC.elem = new ElemType[LC.length];
-    int *pa = LA.elem, *pb = LB.elem, *pc = LC.elem;
-    int *pa_last = pa + LA.length - 1, *pb_last = pb + LB.length - 1;
-    while (pa <= pa_last && pb <= pb_last)
-    {
-        if (*pa <= *pb)
-            *pc++ = *pa++;
-        else
-            *pc++ = *pb++;
-    }
-    while (pa <= pa_last)
-        *pc++ = *pa++;
-    while (pb <= pb_last)
-        *pc++ = *pb++;
+
 }
 int main()
 {
-    SqList LA, LB, LC;
+    SqList LA,LB,LC;
     InitList(LA);
     InitList(LB);
     CreateList(LA, 4);
     CreateList(LB, 7);
     Display(LA);
     Display(LB);
-    MergeList(LA, LB, LC);
-    Display(LC);
     return 0;
 }

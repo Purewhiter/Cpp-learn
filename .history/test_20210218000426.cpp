@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-02-02 22:44:10
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-02-27 14:33:12
+ * @LastEditTime: 2021-02-18 00:04:26
  * @Description : 
  */
 #include<iostream>
@@ -17,6 +17,6 @@ int main()
     //     (*i)*= 2;
     // for(auto i:vs)
     //     cout << i << endl;
-    cout << "ä½ å¥½ï¼Œä¸–ç•Œ" << endl;
+    cout << "ÄãºÃ£¬ÊÀ½ç" << endl;
     return 0;
 }

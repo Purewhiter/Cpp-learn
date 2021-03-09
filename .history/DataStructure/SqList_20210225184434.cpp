@@ -117,7 +117,9 @@ void MergeList(SqList LA, SqList LB, SqList &LC)
     int *pa_last = pa + LA.length - 1, *pb_last = pb + LB.length - 1;
     while (pa <= pa_last && pb <= pb_last)
     {
-        if (*pa <= *pb)
+        if (*pa == *pb)
+            pb++;
+        else if (*pa < *pb)
             *pc++ = *pa++;
         else
             *pc++ = *pb++;
