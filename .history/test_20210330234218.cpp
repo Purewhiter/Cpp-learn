@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-02-02 22:44:10
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-03-30 23:45:08
+ * @LastEditTime: 2021-03-30 23:42:18
  * @Description : 
  */
 #include <iostream>
@@ -131,7 +131,7 @@ double float_to_double(float x) //FIXME:非规格化数转换存在问题
         tmp = tmp | ((E - 127 + 1023) << 52);
         tmp = tmp | (M << 29);
     }
-    else if (E == 0 && M != 0)//此时float为非规格化数，应将其转化为double的规格化数
+    else if (E == 0 && M != 0)
     {
         int n = 0;
         while ((M & 0x00800000) == 0)
@@ -147,7 +147,9 @@ double float_to_double(float x) //FIXME:非规格化数转换存在问题
     dp = (double *)&tmp;
     d = *dp;
     printf("float:%.50f\n", x);
+    float_to_binary(x);
     printf("double:%.50lf\n", d);
+    double_to_binary(d);
     return d;
 }
 // double float_to_double(float x)

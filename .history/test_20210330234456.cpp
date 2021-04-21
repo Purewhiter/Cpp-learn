@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-02-02 22:44:10
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-03-30 23:45:08
+ * @LastEditTime: 2021-03-30 23:44:56
  * @Description : 
  */
 #include <iostream>
@@ -98,7 +98,7 @@ int main()
     // cout << d;
     int a = 0xfff00000;
     float *fp1 = (float *)&a, f1 = *fp1;
-    float f = 5e-43;
+    float f = 5e-46;
     double d = f;
     float_to_double(f);
     printf("%.50f", d);

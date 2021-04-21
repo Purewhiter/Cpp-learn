@@ -34,23 +34,23 @@ float int_to_float(int x);        //第7题
 double float_to_double(float x);  //第8题
 int main()
 {
-    // printf("1. short_to_int\n");
-    // printf("Please input a short integer(-32768~32767):");
-    // short x1;
-    // scanf("%hd", &x1);
-    // short_to_int(x1);
+    printf("1. short_to_int\n");
+    printf("Please input a short integer(-32768~32767):");
+    short x1;
+    scanf("%hd", &x1);
+    short_to_int(x1);
 
-    // printf("\n2. int_to_short\n");
-    // printf("Please input an integer(-2147483648~2147483647):");
-    // int x2;
-    // scanf("%d", &x2);
-    // int_to_short(x2);
+    printf("\n2. int_to_short\n");
+    printf("Please input an integer(-2147483648~2147483647):");
+    int x2;
+    scanf("%d", &x2);
+    int_to_short(x2);
 
-    // printf("\n3. cmp_offsetCode\n");
-    // printf("Please enter x y(offsetCode,like 0x0000ffff 0xffff0000): ");
-    // int x3, y3;
-    // scanf("%x %x", &x3, &y3);
-    // printf("return code=%d\n", cmp_offsetCode(x3, y3));
+    printf("\n3. cmp_offsetCode\n");
+    printf("Please enter x y(offsetCode,like 0x0000ffff 0xffff0000): ");
+    int x3, y3;
+    scanf("%x %x", &x3, &y3);
+    printf("return code=%d\n", cmp_offsetCode(x3, y3));
 
     printf("\n4. float_to_binary\n");
     printf("Please input a float number:");
@@ -58,26 +58,26 @@ int main()
     scanf("%f", &x4); //20.59375
     float_to_binary(x4);
 
-    // printf("\n5. binary_to_float\n");
-    // binary_to_float();
+    printf("\n5. binary_to_float\n");
+    binary_to_float();
 
-    // printf("\n6. float_to_int\n");
-    // printf("Please input a float number:");
-    // float x6;
-    // scanf("%f", &x6);
-    // float_to_int(x6);
+    printf("\n6. float_to_int\n");
+    printf("Please input a float number:");
+    float x6;
+    scanf("%f", &x6);
+    float_to_int(x6);
 
-    // printf("\n7. int_to_float\n");
-    // printf("Please input an integer:");
-    // int x7;
-    // scanf("%d", &x7);
-    // int_to_float(x7);
+    printf("\n7. int_to_float\n");
+    printf("Please input an integer:");
+    int x7;
+    scanf("%d", &x7);
+    int_to_float(x7);
 
-    // printf("\n8. float_to_double\n");
-    // printf("Please input a float number:");
-    // float x8;
-    // scanf("%f", &x8);
-    // float_to_double(x8);
+    printf("\n8. float_to_double\n");
+    printf("Please input a float number:");
+    float x8;
+    scanf("%f", &x8);
+    float_to_double(x8);
     return 0;
 }
 

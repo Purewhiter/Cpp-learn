@@ -3,9 +3,12 @@ void displayShort(int x) //以二进制形式展示短整型数x
 {
     for (int i = 15; i >= 0; i--)
     {
+        if (i == 15)
+            printf("\x1b[31m");
         printf("%d", (x >> i) & 1);
         if (i % 4 == 0)
             printf(" ");
+        printf("\x1b[0m");
     }
     printf("\n");
 }
@@ -13,9 +16,12 @@ void displayInt(int x) //以二进制形式展示整型数x
 {
     for (int i = 31; i >= 0; i--)
     {
+        if (i == 31)
+            printf("\x1b[31m");
         printf("%d", (x >> i) & 1);
         if (i % 4 == 0)
             printf(" ");
+        printf("\x1b[0m");
     }
     printf("\n");
 }
@@ -52,20 +58,20 @@ int main()
     // scanf("%x %x", &x3, &y3);
     // printf("return code=%d\n", cmp_offsetCode(x3, y3));
 
-    printf("\n4. float_to_binary\n");
-    printf("Please input a float number:");
-    float x4;
-    scanf("%f", &x4); //20.59375
-    float_to_binary(x4);
+    // printf("\n4. float_to_binary\n");
+    // printf("Please input a float number:");
+    // float x4;
+    // scanf("%f", &x4); //20.59375
+    // float_to_binary(x4);
 
     // printf("\n5. binary_to_float\n");
     // binary_to_float();
 
-    // printf("\n6. float_to_int\n");
-    // printf("Please input a float number:");
-    // float x6;
-    // scanf("%f", &x6);
-    // float_to_int(x6);
+    printf("\n6. float_to_int\n");
+    printf("Please input a float number:");
+    float x6;
+    scanf("%f", &x6);
+    float_to_int(x6);
 
     // printf("\n7. int_to_float\n");
     // printf("Please input an integer:");
@@ -167,9 +173,15 @@ void float_to_binary(float x)
     printf("binary:\n");
     for (int i = 31; i >= 0; i--)
     {
+        if (i == 30)
+            printf("\x1b[31m");
+        if (i == 22)
+            printf("\x1b[32m");
         printf("%d", (tmp >> i) & 1);
         if (i % 4 == 0)
             printf(" ");
+        if (i == 0)
+            printf("\x1b[0m");
     }
     printf("\n");
 }
@@ -195,21 +207,30 @@ float binary_to_float()
 }
 int float_to_int(float x)
 {
-    int S, E, M, *ip, tmp, exp, result;
+    int S, E, M, *ip, tmp, sign, exp, tail, result;
     ip = (int *)&x;
     tmp = *ip;
     S = (tmp >> 31) & 0x00000001;
     E = (tmp >> 23) & 0x000000ff;
     M = tmp & 0x007fffff;
+    // if (E - 127 >= 31)
+    // {
+    //     if (S == 1)
+    //         result = 0x7fffffff;
+    //     else
+    //         result = 0x10000000;
+    // }
+    // else
+    // {
+    //     sign = (S == 0 ? 1 : -1);
+    //     exp = E - 127;
+    //     tail = (M | 0x00800000) >> (23 - exp);
+    //     result = tail * sign;
+    // }
+    sign = (S == 0 ? 1 : -1);
     exp = E - 127;
-    if(23-exp>=0)
-        result = (M | 0x00800000) >> (23 - exp);
-    else
-        result= (M | 0x00800000) << (exp-23);
-    if(S)//负数则转换成补码表示
-    {
-        result = ((result ^ 0x7fffffff)+1)|0x80000000;
-    }
+    tail = (M | 0x00800000) >> (23 - exp);
+    result = tail * sign;
     printf("float:%f\n", x);
     printf("int:%d\n", result);
     return result;

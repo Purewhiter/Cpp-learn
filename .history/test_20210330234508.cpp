@@ -98,10 +98,10 @@ int main()
     // cout << d;
     int a = 0xfff00000;
     float *fp1 = (float *)&a, f1 = *fp1;
-    float f = 5e-43;
+    float f = 5e-46;
     double d = f;
     float_to_double(f);
-    printf("%.50f", d);
+    printf("%.60f", d);
     // printf("%f\n", f1);
     // double d = f1;
     // float_to_binary(f1);

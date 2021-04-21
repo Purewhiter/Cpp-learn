@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-02-02 22:44:10
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-03-30 23:45:08
+ * @LastEditTime: 2021-03-30 22:28:52
  * @Description : 
  */
 #include <iostream>
@@ -98,7 +98,7 @@ int main()
     // cout << d;
     int a = 0xfff00000;
     float *fp1 = (float *)&a, f1 = *fp1;
-    float f = 5e-43;
+    float f = 5e-37;
     double d = f;
     float_to_double(f);
     printf("%.50f", d);
@@ -120,30 +120,11 @@ double float_to_double(float x) //FIXME:非规格化数转换存在问题
     E = ((i >> 23) & 0x000000ff);
     M = i & 0x007fffff;
     tmp = tmp | (S << 63);
+    tmp = tmp | (M << 29);
     if (E == 255)
-    {
-        E = 2047;
-        tmp = tmp | (E << 52);
-        tmp = tmp | (M << 29);
-    }
-    else if (E != 0)
-    {
+        tmp = tmp | (1023 << 52);
+    else if(E!=0)
         tmp = tmp | ((E - 127 + 1023) << 52);
-        tmp = tmp | (M << 29);
-    }
-    else if (E == 0 && M != 0)//此时float为非规格化数，应将其转化为double的规格化数
-    {
-        int n = 0;
-        while ((M & 0x00800000) == 0)
-        {
-            M = M << 1;
-            n++;
-        }
-        M = M & 0x007fffff;
-        E = 1023 - 126 - n;
-        tmp = tmp | (E << 52);
-        tmp = tmp | (M << 29);
-    }
     dp = (double *)&tmp;
     d = *dp;
     printf("float:%.50f\n", x);
