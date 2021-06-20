@@ -2,33 +2,48 @@
  * @Author      : PureWhite
  * @Date        : 2021-03-10 18:16:37
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-04-02 20:59:31
+ * @LastEditTime: 2021-06-20 11:46:28
  * @Description : 
  */
-#include<iostream>
-#include<fstream>
+#include <ctime>
+#include <fstream>
+#include <iostream>
+#include <vector>
 using namespace std;
-struct st
+vector<int> t;
+void dfs(int cur, vector<int> &ItemSet)
 {
-    int num;
-    string name;
-    string sex;
-    int age;
-    string addr;
-};
-
+    if (cur == (int)ItemSet.size())
+    {
+        for (auto item : t)
+            cout << item << " ";
+        cout << endl;
+        return;
+    }
+    t.push_back(ItemSet[cur]);
+    dfs(cur + 1, ItemSet);
+    t.pop_back();
+    dfs(cur + 1, ItemSet);
+}
 int main()
 {
-    string s1 = "hh";
-    string s2 = "hh";
-    if(s1==s2)
-        printf("=");
-    else
-        printf("!=");
-    // string s= "你好啊";
-    // fstream file;
-    // file.open("text.txt", ios::app);
-    // file << s<<endl;
-    // file.write(s, sizeof(s));
+    // vector<int> nums = {1, 2, 3};
+    // dfs(0, nums);
+    int N = 20;
+    clock_t startTime, endTime;
+    startTime = clock();
+    for (int i = 0; i < (1 << N); i++)
+    {
+        vector<int> tempSet;
+        for (int j = 0; j < N; j++)
+            if (((i >> j) & 1) == 1)
+                tempSet.push_back(j);
+        // for (auto item : tempSet)
+        //     cout << item << " ";
+        // cout << endl;
+    }
+    endTime = clock();
+    cout << "The run time is: " << (double)(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;
+
     return 0;
 }
