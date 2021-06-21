@@ -2,7 +2,7 @@
  * @Author      : PureWhite
  * @Date        : 2021-06-20 14:58:29
  * @LastEditors : PureWhite
- * @LastEditTime: 2021-06-20 17:27:03
+ * @LastEditTime: 2021-06-21 15:16:22
  * @Description : 
  */
 #include <Algorithm>
@@ -127,7 +127,6 @@ int main()
         if (bestChoice[i] == 1)
             cout << i << " ";
     }
-    cout << endl;
     cout <<endl<< "MaxProfit：" << MaxProfit << endl;
     return 0;
 }

@@ -38,26 +38,26 @@ int MaxProfit;  //当前最大价值
 
 vector<int> tempChoice(N); //记录搜索路径，即选择情况
 int bestChoice[N];         //最优选择
-int V[N + 1][Capacity + 1];
+int P[N + 1][Capacity + 1];
 
 int DP_Knapsack(vector<Item> ItemSet, int N, int Capacity)
 {
     int i, j;
     for (i = 0; i <= N; i++)
-        V[i][0] = 0;
+        P[i][0] = 0;
     for (j = 0; j <= Capacity; j++)
-        V[0][j] = 0;
+        P[0][j] = 0;
 
     for (i = 1; i <= N; i++)
         for (j = 1; j <= Capacity; j++)
             if (j < ItemSet[i].weight)
-                V[i][j] = V[i - 1][j];
+                P[i][j] = P[i - 1][j];
             else
-                V[i][j] = max(V[i - 1][j], V[i - 1][j - ItemSet[i].weight] + ItemSet[i].profit);
+                P[i][j] = max(P[i - 1][j], P[i - 1][j - ItemSet[i].weight] + ItemSet[i].profit);
 
     for (i = N, j = Capacity; i > 0; i--)
     {
-        if (V[i][j] > V[i - 1][j])
+        if (P[i][j] > P[i - 1][j])
         {
             bestChoice[i] = 1;
             j = j - ItemSet[i].weight;
@@ -65,7 +65,7 @@ int DP_Knapsack(vector<Item> ItemSet, int N, int Capacity)
         else
             bestChoice[i] = 0;
     }
-    return V[N][Capacity];
+    return P[N][Capacity];
 }
 
 int main()
